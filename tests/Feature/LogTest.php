@@ -35,8 +35,7 @@ class LogTest extends TestCase
     public function testChannelHandler()
     {
         $log = Log::channel("file");
-        Log::withContext(["user" => "rizal"]);
-        $log->error("Erorr pak");
+        $log->error("Erorr pak", ["user" => "rizal"]);
         self::assertTrue(true);
     }
 }

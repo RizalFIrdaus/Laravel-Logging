@@ -17,4 +17,26 @@ class LogTest extends TestCase
         Log::critical("Hello Error");
         self::assertTrue(true);
     }
+
+    public function testContextLog()
+    {
+        Log::alert("Ada error dibagian ini", ["rizal" => "web developer"]);
+        self::assertTrue(true);
+    }
+
+    public function testWithContext()
+    {
+        Log::withContext(["user" => "Muhammad Rizal Firdaus"]);
+        Log::error("Gagal menambahkan produk");
+        Log::alert("ada error di penambahan produk");
+        self::assertTrue(true);
+    }
+
+    public function testChannelHandler()
+    {
+        $log = Log::channel("file");
+        Log::withContext(["user" => "rizal"]);
+        $log->error("Erorr pak");
+        self::assertTrue(true);
+    }
 }
